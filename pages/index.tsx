@@ -34,6 +34,10 @@ export const getServerSideProps: GetServerSideProps<
 export default function Home({
   isConnected,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
+  // force connected or disconnected page
+  // isConnected = true;
+
+  // main page content
   if (isConnected) {
     return (
       <div className="container">
