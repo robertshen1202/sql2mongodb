@@ -1,53 +1,38 @@
-## Example app using MongoDB
+# Web SQL Editor
 
-[MongoDB](https://www.mongodb.com/) is a general purpose, document-based, distributed database built for modern application developers and for the cloud era. This example will show you how to connect to and use MongoDB as your backend for your Next.js app.
+This is a demo project for a web-based sql editor for MongoDB
 
-If you want to learn more about MongoDB, visit the following pages:
-
-- [MongoDB Atlas](https://mongodb.com/atlas)
-- [MongoDB Documentation](https://docs.mongodb.com/)
-
-## Deploy your own
-
-Once you have access to the environment variables you'll need, deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?project-name=with-mongodb&repository-name=with-mongodb&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-mongodb&integration-ids=oac_jnzmjqM10gllKmSrG0SGrHOH)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init), [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/), or [pnpm](https://pnpm.io) to bootstrap the example:
+Developed using Node.js v18.20.2 with Next.js MongoDB Example on Ubuntu 22.04.4 LTS
 
 ```bash
-npx create-next-app --example with-mongodb with-mongodb-app
+npx create-next-app --example with-mongodb web-sql-editor
 ```
 
-```bash
-yarn create next-app --example with-mongodb with-mongodb-app
-```
+## prerequisite
 
-```bash
-pnpm create next-app --example with-mongodb with-mongodb-app
-```
+1. Node.js v14+: developed with node v18.20.2
+2. Mongo DB: developed with node v7.0.8
+
+### install Node.js
+
+Recommed to install using Node Version Manager, [Instruction](https://github.com/nvm-sh/nvm) on their github page! 
+
+### install MongoBD
+
+1. local deployment: [Offical documentation](https://www.mongodb.com/docs/manual/tutorial/install-mongodb-community-with-docker/) for deploying MongoDB locally using docker
+2. cloud deployment: [Offical getting started](https://www.mongodb.com/docs/atlas/getting-started/) page for MongoDB Atlas
 
 ## Configuration
 
-### Set up a MongoDB database
-
-Set up a MongoDB database either locally or with [MongoDB Atlas for free](https://mongodb.com/atlas).
-
-### Set up environment variables
-
-Copy the `env.local.example` file in this directory to `.env.local` (which will be ignored by Git):
-
-```bash
-cp .env.local.example .env.local
-```
+### Connect to a MongoDB database
 
 Set each variable on `.env.local`:
 
-- `MONGODB_URI` - Your MongoDB connection string. If you are using [MongoDB Atlas](https://mongodb.com/atlas) you can find this by clicking the "Connect" button for your cluster.
+- `MONGODB_URI` - Your MongoDB connection string. 
+  - local connection: `mongodb://127.0.0.1:27017`
+  - cloud connection: If you are using [MongoDB Atlas](https://mongodb.com/atlas) you can find this by clicking the "Connect" button for your cluster.
 
-### Run Next.js in development mode
+## Run Next.js in development mode
 
 ```bash
 npm install
@@ -64,19 +49,3 @@ Your app should be up and running on [http://localhost:3000](http://localhost:30
 You will either see a message stating "You are connected to MongoDB" or "You are NOT connected to MongoDB". Ensure that you have provided the correct `MONGODB_URI` environment variable.
 
 When you are successfully connected, you can refer to the [MongoDB Node.js Driver docs](https://mongodb.github.io/node-mongodb-native/3.4/tutorials/collections/) for further instructions on how to query your database.
-
-## Deploy on Vercel
-
-You can deploy this app to the cloud with [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
-
-#### Deploy Your Local Project
-
-To deploy your local project to Vercel, push it to GitHub/GitLab/Bitbucket and [import to Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example).
-
-**Important**: When you import your project on Vercel, make sure to click on **Environment Variables** and set them to match your `.env.local` file.
-
-#### Deploy from Our Template
-
-Alternatively, you can deploy using our template by clicking on the Deploy button below.
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?project-name=with-mongodb&repository-name=with-mongodb&repository-url=https%3A%2F%2Fgithub.com%2Fvercel%2Fnext.js%2Ftree%2Fcanary%2Fexamples%2Fwith-mongodb&integration-ids=oac_jnzmjqM10gllKmSrG0SGrHOH)
