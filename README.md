@@ -15,7 +15,7 @@ npx create-next-app --example with-mongodb web-sql-editor
 
 ### install Node.js
 
-Recommed to install using Node Version Manager, [Instruction](https://github.com/nvm-sh/nvm) on their github page! 
+Recommend to install using Node Version Manager, [Instruction](https://github.com/nvm-sh/nvm) on their github page! 
 
 ### install MongoBD
 
