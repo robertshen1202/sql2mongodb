@@ -11,7 +11,7 @@ npx create-next-app --example with-mongodb web-sql-editor
 ## prerequisite
 
 1. Node.js v14+: developed with node v18.20.2
-2. Mongo DB: developed with node v7.0.8
+2. Mongo DB: developed with v7.0.8
 
 ### install Node.js
 
