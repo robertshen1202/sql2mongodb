@@ -1,6 +1,7 @@
 import Head from "next/head";
 import clientPromise from "../lib/mongodb";
 import type { InferGetServerSidePropsType, GetServerSideProps } from "next";
+import Link from 'next/link';
 
 type ConnectionStatus = {
   isConnected: boolean;
@@ -72,21 +73,26 @@ export default function Home({
         </Head>
   
         <main>
+
           <h1>
             MongoDB Connected
           </h1>
-            <ul>
-              {databases.map(db => (
-                <li key={db.name}>
-                  {db.name}
-                  <ul>
-                    {db.collections.map(collection => (
-                      <li key={collection}>{collection}</li>
-                    ))}
-                  </ul>
-                </li>
-              ))}
-            </ul>
+
+          <ul>
+            {databases.map(db => (
+              <li key={db.name}>
+                {db.name}
+                <ul>
+                  {db.collections.map(collection => (
+                    <li key={collection}>{collection}</li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+
+          <Link href="/InputPage">SQL Input</Link>
+
         </main>
   
         <style jsx global>{`
