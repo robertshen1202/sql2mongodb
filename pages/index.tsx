@@ -6,33 +6,58 @@ type ConnectionStatus = {
   isConnected: boolean;
 };
 
-export const getServerSideProps: GetServerSideProps<
-  ConnectionStatus
-> = async () => {
+export async function getServerSideProps() {
+  // MongoDB connection URI
+  const uri = 'mongodb://localhost:27017';
+
+  // Create a new MongoClient
+  const { MongoClient } = require('mongodb');
+  const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true });
+
   try {
-    await clientPromise;
-    // `await clientPromise` will use the default database passed in the MONGODB_URI
-    // However you can use another database (e.g. myDatabase) by replacing the `await clientPromise` with the following code:
-    //
-    // `const client = await clientPromise`
-    // `const db = client.db("myDatabase")`
-    //
-    // Then you can execute queries against your database like so:
-    // db.find({}) or any of the MongoDB Node Driver commands
+    // Connect to the MongoDB server
+    await client.connect();
+    console.log('Connected to MongoDB server');
+
+    // Get the list of databases
+    const adminDb = client.db('admin');
+    const databases = await adminDb.admin().listDatabases();
+
+    // Loop through each database
+    const databaseNames = databases.databases.map(dbInfo => dbInfo.name);
+
+    // Get the list of collections for each database
+    const collectionsByDatabase = [];
+    for (const dbName of databaseNames) {
+      const db = client.db(dbName);
+      const collections = await db.listCollections().toArray();
+      const collectionNames = collections.map(collection => collection.name);
+      collectionsByDatabase.push({ name: dbName, collections: collectionNames });
+    }
 
     return {
-      props: { isConnected: true },
+      props: {
+        databases: collectionsByDatabase, 
+        isConnected: true 
+      }
     };
-  } catch (e) {
-    console.error(e);
+  } catch (err) {
+    console.error('Error:', err);
     return {
-      props: { isConnected: false },
+      props: {
+        databases: []
+      }
     };
+  } finally {
+    // Close the MongoDB connection
+    await client.close();
+    console.log('Disconnected from MongoDB server');
   }
-};
+}
 
 export default function Home({
   isConnected,
+  databases,
 }: InferGetServerSidePropsType<typeof getServerSideProps>) {
   // force connected or disconnected page
   // isConnected = true;
@@ -42,14 +67,26 @@ export default function Home({
     return (
       <div className="container">
         <Head>
-          <title>Create Next App</title>
+          <title>Web SQL Editor</title>
           <link rel="icon" href="/favicon.ico" />
         </Head>
   
         <main>
           <h1>
-            Web SQL Editor: MongoDB Connected
+            MongoDB Connected
           </h1>
+            <ul>
+              {databases.map(db => (
+                <li key={db.name}>
+                  {db.name}
+                  <ul>
+                    {db.collections.map(collection => (
+                      <li key={collection}>{collection}</li>
+                    ))}
+                  </ul>
+                </li>
+              ))}
+            </ul>
         </main>
   
         <style jsx global>{`
