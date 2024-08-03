@@ -93,6 +93,10 @@ export default function Home({
 
           <Link href="/InputPage">SQL Input</Link>
 
+          <br></br>
+          <br></br>
+          <Link href="/display">Display MongoDB Content</Link>
+
         </main>
   
         <style jsx global>{`
