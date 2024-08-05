@@ -8,7 +8,7 @@ This is a demo project for a web-based sql editor for MongoDB. The APP can perfo
 5. INSERT
 6. DROP
 
-Developed using Node.js v18.20.2 with Next.js MongoDB Example on Ubuntu 22.04.4 LTS
+Developed using Node.js on Ubuntu 22.04.4 LTS
 
 ```bash
 npx create-next-app --example with-mongodb web-sql-editor
