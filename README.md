@@ -1,6 +1,12 @@
 # Web SQL Editor
 
-This is a demo project for a web-based sql editor for MongoDB
+This is a demo project for a web-based sql editor for MongoDB. The APP can perform basic SQL parsing into MongoDB instructure. The follow sql keywords are supported: 
+1. SELECT
+2. FROM
+3. JOIN
+4. WHERE
+5. INSERT
+6. DROP
 
 Developed using Node.js v18.20.2 with Next.js MongoDB Example on Ubuntu 22.04.4 LTS
 
